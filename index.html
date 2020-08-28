@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="text-center">Weather Dashboard</h1>
+    </header>
+
+    <div class="col-5 ">
+        <div>
+            <h3>Search for a city:</h3>
+            <input id="inputSearch" class="float-left">
+            <button type="button" id="search" class=" btn btn-outline-info fa fa-search"></button>
+            <!-- ul empty to be populated with search history -->
+            <ul id="searchHistory" class="list-group">
+
+            </ul>
+        </div>
+    </div>
+
+    <aside>
+
+        <div class="row card">
+            <div class="col-lg-8 col-lg-offset-2 text-center card-body">
+                <h2>City: <span id="city"></span></h2>
+                <h3 id="displayDate"> Enter Date</h3>
+
+                <img id="weather_image" src="">
+                <h2> <span class="card-text" id="temp"></span></h2>
+                <h2> <span class="card-text" id="humidity"></span></h2>
+                <h2> <span class="card-text" id="windSpeed"></span></h2>
+                <h2> <span class="card-text" id="uvIndex"></span></h2>
+            </div>
+        </div>
+
+    </aside>
+
+    <container>
+        <div id="forecast" class="card-group">
+            <h2>5-Day Forecast:</h2>
+
+            <!-- populate with 5 day forcast -->
+        </div>
+    </container>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
