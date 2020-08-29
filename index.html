@@ -16,23 +16,24 @@
     <header>
         <h1 class="text-center">Weather Dashboard</h1>
     </header>
-
-    <div class="col-5 ">
+<div class="mt-5">
+    <div class="col-3 search float-left">
         <div>
             <h3>Search for a city:</h3>
             <input id="inputSearch" class="float-left">
             <button type="button" id="search" class=" btn btn-outline-info fa fa-search"></button>
             <!-- ul empty to be populated with search history -->
+        
             <ul id="searchHistory" class="list-group">
 
             </ul>
         </div>
     </div>
 
-    <aside>
+    
 
-        <div class="row card">
-            <div class="col-lg-8 col-lg-offset-2 text-center card-body">
+        <div id="card" class="row card">
+            <div id="city-box" class="float-right col-lg-8 col-lg-offset-2 text-center card-body">
                 <h2>City: <span id="city"></span></h2>
                 <h3 id="displayDate"> Enter Date</h3>
 
@@ -44,16 +45,19 @@
             </div>
         </div>
 
-    </aside>
+    
 
     <container>
         <div id="forecast" class="card-group">
             <h2>5-Day Forecast:</h2>
+            <div>
+
+            </div>
 
             <!-- populate with 5 day forcast -->
         </div>
     </container>
-
+</div>
 
 
 

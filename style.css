@@ -1,2 +1,23 @@
+body{
+    background-image: url(clouds.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#card{
+    width: 60%;
+    
+    margin-right: 30px;
+};
 
+#forecast{
+    width: 60%;
+    
+};
 
+.search{
+    width: 10%;
+}
+
+header{
+    background-color: rgb(243, 180, 64);
+}

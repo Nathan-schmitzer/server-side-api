@@ -7,23 +7,21 @@ $("#displayDate").text(currentDate);
 
 var cityArr = [];
 
-function renderCities() {
-    if (cityArr.length >= 1) {
+function renderCities(cityArr) {
+    // if (cityArr.length >= 1) {
         $("#searchHistory").empty();
         
         for (var i = 0; i < cityArr.length; i++) {
             var liEl = $("<li>")
             liEl.attr("data-name", cityArr[i]);
             liEl.addClass("city list-group-item");
-            if( i === 0){
-                liEl.addClass("active");
-            }
+            // if( i === 0){
+            //     liEl.addClass("active");
+            // }
             liEl.text(cityArr[i]);
             $("#searchHistory").append(liEl);
-        }
-    } else {
-        return;
-    }
+        // }
+    } 
 }
 
 $(document).on("click", ".city", clickCity);
@@ -34,9 +32,9 @@ function clickCity(event) {
     event.stopPropagation();
     event.preventDefault();
     var cityVal = event.target.innerHTML;
-    var cityValClass = $(this);
+   
     searchCity(cityVal);
-    updateClass(cityValClass);
+    
 };
 
 // on click render cities you search. if nothing input, put nothing.
@@ -48,8 +46,10 @@ $("#search").on("click", function(event) {
     if(findNewCity === undefined || findNewCity === NaN || findNewCity === "") {
         return;
     };
+    cityArr.unshift(findNewCity);
+    
     searchCity(findNewCity);
-    renderCities();
+    renderCities(cityArr);
 });
 
 
@@ -87,28 +87,29 @@ function searchCity(findNewCity) {
                 $("#uvIndex").attr("style", "background-color: green");
             } else if (uvIndexVal > 4 && uvIndexVal < 6) {
                 $("#uvIndex").attr("style", "backgorund-color: yellow");
-            } else { $("#uvIndex").attr("style", "background-color: red"); };
+            } else { $("#uvIndex").attr("style", "background-color: red"); 
+        };
             $("#uvIndex").text("UV Index: " + uvIndexVal);
 
             for (var x = 1; x < 6; x++) {
-            let fiveDayTemp = result.daily[x].temp.day.toFixed(1);
-                let fiveDayHumidity = result.daily[x].humidity;
-                let fiveDayDate = result.daily[x].sunrise;
-                let fiveDayWind = result.daily[x].wind_speed.toFixed(1);
-                let fiveDayPic = result.daily[x].weather[0].icon;
-                let fiveDayIcon = "http://openweathermap.org/img/wn/" + fiveDayPic + ".png";
-                fiveDayDate = fiveDayDate * 1000;
+                let futureForTemp = result.daily[x].temp.day.toFixed(1);
+                let futureForHumidity = result.daily[x].humidity;
+                let futureForDate = result.daily[x].sunrise;
+                let futureForWind = result.daily[x].wind_speed.toFixed(1);
+                let futureForPic = result.daily[x].weather[0].icon;
+                let futureForIcon = "http://openweathermap.org/img/wn/" + futureForPic + ".png";
+                futureForDate = futureForDate * 1000;
 
-                let dateObject = new Date(fiveDayDate);
-                let humanDate = dateObject.toLocaleDateString();
+                let dateObject = new Date(futureForDate);
+                let regularDate = dateObject.toLocaleDateString();
 
-                let divEl = $("<div>").addClass("card fiveDayCard").attr("style", "background-color: dodgerblue");
-                let imageEl = $("<img>").addClass("fiveDayImage").attr("src", fiveDayIcon);
-                $(divEl).append("<h5>" + humanDate + "</h5>");
+                let divEl = $("<div>").addClass("card fiveDayCard").attr("style", "background-color: orange");
+                let imageEl = $("<img>").addClass("fiveDayImage").attr("src", futureForIcon).attr("style", "width:50px");
+                $(divEl).append("<h5>" + regularDate + "</h5>");
                 $(divEl).append(imageEl);
-                $(divEl).append("<p>" + "Temp: " + fiveDayTemp + "\u00B0F" + "</p>");
-                $(divEl).append("<p>" + "Wind " + fiveDayWind + " MPH" + "</p>");
-                $(divEl).append("<p>" + "Humidity: " + fiveDayHumidity + "%" + "</p>");
+                $(divEl).append("<p>" + "Temp: " + futureForTemp + "\u00B0F" + "</p>");
+                $(divEl).append("<p>" + "Wind " + futureForWind + " MPH" + "</p>");
+                $(divEl).append("<p>" + "Humidity: " + futureForHumidity + "%" + "</p>");
                 $("#forecast").append(divEl);
             };
         })
